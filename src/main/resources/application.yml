@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: ${APP_NAME:book-management-service}
+    
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+      
+  profiles:
+    active:
+    - ${DB_PROFILE_ACTIVE:dev}
+
+    
+server:
+  port: 5099
+ 
+--- 
+
+#DEV PROFILE
+spring:
+  datasource:
+    driver-class-name: ${DB_DRIVER:com.mysql.cj.jdbc.Driver}
+    url: ${DB_PROTOCALL:jdbc}:${DB_TYPE:mysql}:${DB_HOST:localhost}:${DB_PORT:3306}/${DB_SCHEMA:book-management}
+    username: ${DB_USER:"root""}
+    password: ${DB_PASSWORD:"root"}
+    
+  config:
+    activate:
+      on-profile:
+      - dev
+    
+---
+
+#QA PROFILE
+spring:
+  datasource:
+    driver-class-name: ${DB_DRIVER:org.h2.Driver} 
+    url: ${DB_PROTOCOL:jdbc}:${DB_TYPE:h2}:${DB_HOST:mem}:${DB_SCHEMA:weshopify-users}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:}
+  h2:
+    console:
+      enabled: true
+      path: /h2Console 
+      
+  config:
+    activate:
+      on-profile:
+      - qa
