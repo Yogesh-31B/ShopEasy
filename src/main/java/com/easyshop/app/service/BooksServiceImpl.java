@@ -1,7 +1,9 @@
 package com.easyshop.app.service;
 
 import com.easyshop.app.beans.BookBean;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BooksServiceImpl implements BooksService {
 
 	@Override

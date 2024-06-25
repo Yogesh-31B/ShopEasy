@@ -9,5 +9,7 @@ public class Maven35EasyShopApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Maven35EasyShopApplication.class, args);
 	}
+    
+
 
 }

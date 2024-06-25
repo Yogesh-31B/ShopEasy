@@ -6,7 +6,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-      
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
   profiles:
     active:
     - ${DB_PROFILE_ACTIVE:dev}
@@ -15,16 +19,16 @@ spring:
 server:
   port: 5099
  
---- 
-
+---
+  #jdbc:mysql://localhost:3306/book_management
 #DEV PROFILE
 spring:
   datasource:
-    driver-class-name: ${DB_DRIVER:com.mysql.cj.jdbc.Driver}
-    url: ${DB_PROTOCALL:jdbc}:${DB_TYPE:mysql}:${DB_HOST:localhost}:${DB_PORT:3306}/${DB_SCHEMA:book-management}
-    username: ${DB_USER:"root""}
-    password: ${DB_PASSWORD:"root"}
-    
+      driver-class-name: ${DB_DRIVER:com.mysql.cj.jdbc.Driver}
+      url: ${DB_PROTOCOL:jdbc}:${DB_TYPE:mysql}://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_SCHEMA:book_management}
+      username: ${DB_USER:root}
+      password: ${DB_PASSWORD:root}
+
   config:
     activate:
       on-profile:
