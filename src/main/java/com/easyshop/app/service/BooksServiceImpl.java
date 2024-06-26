@@ -1,39 +1,48 @@
 package com.easyshop.app.service;
 
-import com.easyshop.app.beans.BookBean;
+
+import com.easyshop.app.models.Book;
+import com.easyshop.app.repo.BooksRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class BooksServiceImpl implements BooksService {
 
+	BooksRepository booksRepository;
+
+	BooksServiceImpl(BooksRepository booksRepository){
+		this.booksRepository = booksRepository;
+	}
+
 	@Override
-	public BookBean addBook(BookBean bookBean) {
-		// TODO Auto-generated method stub
+	public Book addBook(Book book) {
+        return booksRepository.save(Optional.ofNullable(book).orElseThrow(() -> new RuntimeException("Data not found"))) ;
+	}
+
+	@Override
+	public Book findBook(Book book) {
 		return null;
 	}
 
 	@Override
-	public BookBean findBook(BookBean bookBean) {
-		// TODO Auto-generated method stub
+	public Book findBookById(int id) {
 		return null;
 	}
 
 	@Override
-	public BookBean findBookById(BookBean bookBean) {
-		// TODO Auto-generated method stub
+	public Book updateBook(Book book) {
 		return null;
 	}
 
 	@Override
-	public BookBean updateBook(BookBean bookBean) {
-		// TODO Auto-generated method stub
+	public Book deleteBook(Book book) {
 		return null;
 	}
 
 	@Override
-	public BookBean deleteBook(BookBean bookBean) {
-		// TODO Auto-generated method stub
-		return null;
+	public Book findByAuthor(String name) {
+		return booksRepository.findByAuthor(name);
 	}
-
 }

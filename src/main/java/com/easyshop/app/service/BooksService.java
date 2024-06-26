@@ -1,17 +1,19 @@
 package com.easyshop.app.service;
 
-import com.easyshop.app.beans.BookBean;
+import com.easyshop.app.models.Book;
 
 public interface BooksService {
 
-	BookBean addBook(BookBean bookBean);
+	Book addBook(Book book);
 
-	BookBean findBook(BookBean bookBean);
+	Book findBook(Book book);
 
-	BookBean findBookById(BookBean bookBean);
+	Book findBookById(int id);
 
-	BookBean updateBook(BookBean bookBean);
+	Book updateBook(Book book);
 
-	BookBean deleteBook(BookBean bookBean);
+	Book deleteBook(Book book);
+
+	Book findByAuthor(String name);
 
 }
